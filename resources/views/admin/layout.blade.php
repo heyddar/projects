@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>پنل مدیریت | داشبورد اول</title>
+    @yield('meta')
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="{{asset('admin/plugins/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -29,8 +31,10 @@
     <!-- bootstrap rtl -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap-rtl.min.css')}}">
     <!-- template rtl version -->
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/dist/css/custom-style.css')}}">
     <link rel="stylesheet" href="{{asset('admin/extra.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
 
 </head>
@@ -78,6 +82,36 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<script>
+    textarea.replace( 'summary-ckeditor' );
+</script>
 <script src="{{asset('admin/dist/js/demo.js')}}"></script>
+
+<script>
+CKEDITOR.replace( 'editor' );
+</script>
+{{--<script>--}}
+{{--    $('textarea').ckeditor();--}}
+{{--    $('.cleditor').ckeditor();--}}
+{{--</script>--}}
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+@yield('ajax')
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script >
+   $('#size_list').select2();
+   $('#color_list').select2();
+   $('#tag_list').select2({
+       placeholder:"کلمه کلیدی مورد نظر را انتخاب کنید",
+       tags:true,
+   });
+</script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 @extends('admin.component')
 @section('meta')
-    <title>افزودن دسته بندی جدید </title>
+    <title>افزودن برند جدید </title>
 
 @endsection
 @section('content2')
 <div class="container">
  <div class="card card-body">
 
-        <h2 class="text-primary"> افزودن دسته بندی جدید </h2>
+        <h2 class="text-primary"> افزودن برند جدید </h2>
 
     <hr>
      <?php
@@ -27,12 +27,16 @@
              </ul>
          </div>
      @endif
-    <form class="row justify-content-center" action="{{route('admin.category.store')}}" method="post" id="f1">
+    <form class="row justify-content-center" action="{{route('admin.brand.store')}}" method="post" id="f1" enctype="multipart/form-data">
         @csrf
 
         <div class="col-md-3 form-group">
-            <label for="title"> عنوان دسته بندی  </label>
+            <label for="title"> عنوان  </label>
             <input type="text" name="title" value="{{  old('title') }}" id="title" class="form-control">
+        </div>
+        <div class="col-md-3 form-group">
+            <label for="logo"> لوگو  </label>
+            <input type="file" name="logo" value="{{  old('logo') }}" id="logo" class="form-control">
         </div>
         <div class="col-md-4 form-group text-center">
 

@@ -1,13 +1,13 @@
 @extends('admin.component')
 @section('meta')
-    <title>افزودن سایز جدید </title>
+    <title>افزودن دسته بندی جدید </title>
 
 @endsection
 @section('content2')
 <div class="container">
  <div class="card card-body">
 
-        <h2 class="text-primary"> افزودن سایز جدید </h2>
+        <h2 class="text-primary"> افزودن دسته بندی جدید </h2>
 
     <hr>
      <?php
@@ -27,7 +27,7 @@
              </ul>
          </div>
      @endif
-    <form class="row justify-content-center" action="{{route('admin.size.store')}}" method="post" id="f1">
+    <form class="row justify-content-center" action="{{route('admin.group.store')}}" method="post" id="f1">
         @csrf
 
         <div class="col-md-3 form-group">
@@ -46,23 +46,3 @@
   </div>
 </div>
 @endsection
-{{--@section('ajax')--}}
-{{--    <script type="text/javascript">--}}
-{{--        $(document).ready(function () {--}}
-{{--            $("#f1").submit(function (event) {--}}
-{{--                event.preventDefault();--}}
-{{--                var $this = $(this);--}}
-{{--                var url = $this.attr('action');--}}
-
-{{--                $.ajax({--}}
-{{--                    url : url,--}}
-{{--                    type:'POST',--}}
-{{--                    datatype:'JSON',--}}
-{{--                    data: $this.serialize(),--}}
-{{--                })--}}
-{{--                    --}}
-{{--            });--}}
-{{--        });--}}
-
-{{--    </script>--}}
-{{--@endsection--}}

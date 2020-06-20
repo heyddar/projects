@@ -7,8 +7,8 @@
 // variables
 var WebMarketVars = {
     currencyBefore: true, // true foe the currencies like USD, where the symbol comes before the number ($123.45). False for the symbol after the number (123,45 €) 
-    currencySymbol: "$",
-    priceRange: [ 0, 1750 ], // minimum and maximum range for the price range selector
+    currencySymbol: "T",
+    priceRange: [ 0, 5000000 ], // minimum and maximum range for the price range selector
     priceStep: 50
 };
 

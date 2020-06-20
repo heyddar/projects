@@ -1,12 +1,12 @@
 @extends('admin.component')
 @section('meta')
-    <title>لیست سایزها </title>
+    <title>لیست کلمات کلیدی </title>
 
 @endsection
 @section('content2')
     <div class="container">
         <div class="card card-body">
-            <h2 class="text-primary">لیست سایزها </h2>
+            <h2 class="text-primary">لیست کلمات کلیدی </h2>
             <?php
             if(Session::get('msg')){
                 echo'<p class="alert alert-success">';
@@ -24,15 +24,15 @@
                 </tr>
                 </thead>
                 <tbody>
-              @foreach ($sizes as $i => $size)
+              @foreach ($tags as $i => $tag)
                     <tr>
                         <th> {{$i+1}}</th>
-                        <td> {{$size->title}}</td>
+                        <td> {{$tag->title}}</td>
                         <td>
-                            <a class="btn btn-info" href="{{route('admin.size.edit',['size'=>$size->id])}}">
+                            <a class="btn btn-info" href="{{route('admin.tag.edit',['tag'=>$tag->id])}}">
                                 <i class="halflings-icon white fa fa-edit"></i>
                             </a>
-                            <a class= "btn btn-danger btn-setting " href="{{route('admin.size.delete',['size'=>$size->id])}}"
+                            <a class= "btn btn-danger btn-setting " href="{{route('admin.tag.delete',['tag'=>$tag->id])}}"
                                onclick="return confirm('آیا مطمئنید؟')"
                                >
 
@@ -47,7 +47,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$sizes->links()}}
+                {{$tags->links()}}
             </div>
         </div>
     </div>

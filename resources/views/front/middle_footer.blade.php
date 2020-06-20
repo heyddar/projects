@@ -1,13 +1,9 @@
-<!--  ==========  -->
-<!--  = Middle footer =  -->
-<!--  ==========  -->
+
 <div class="foot-dark">
     <div class="container">
         <div class="row">
 
-            <!--  ==========  -->
-            <!--  = Menu 1 =  -->
-            <!--  ==========  -->
+
             <div class="span3">
                 <div class="main-titles lined">
                     <h3 class="title"><span class="light">ناوبری</span> اصلی</h3>
@@ -22,9 +18,7 @@
                 </ul>
             </div>
 
-            <!--  ==========  -->
-            <!--  = Menu 2 =  -->
-            <!--  ==========  -->
+
             <div class="span3">
                 <div class="main-titles lined">
                     <h3 class="title"><span class="light">دومین</span> ناوبری</h3>
@@ -78,4 +72,4 @@
         </div>
     </div>
 
-</div> <!-- /middle footer -->
+</div>

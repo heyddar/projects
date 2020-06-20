@@ -56,6 +56,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     ورود
                                 </button>
+                                <a href="{{route('github')}}"  class="btn btn-primary">
+                                    ورود با گیت هاب
+                                </a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

@@ -13,16 +13,17 @@
     <!--  = Main container =  -->
     <!--  ==========  -->
     <div class="container">
-        @include('front.3')
+
+    @include('front.3')
 
         <!--  ==========  -->
         <!--  = Featured Items =  -->
         <!--  ==========  -->
-       @include('front.special_products')
+       @include('front.special_products',$special_products)
     </div> <!-- /container -->
 
     <!--  ==========  -->
-    @include('front.new_products')
+    @include('front.new_products',$products)
 
     <!--  ==========  -->
 

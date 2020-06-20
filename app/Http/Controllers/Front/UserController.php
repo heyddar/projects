@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class UserController extends Controller
 {
@@ -67,10 +69,32 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'nullable|string|min:3|max:200',
+            'email' => 'nullable|string|email|unique:users,email',
+            'new_password' => 'nullable|string|min:8|max:40',
+        ]);
+        $id = auth()->user()->id;
+
+        if ($request->name) {
+            $data ['name'] = $request->name;
+        }
+        if ($request->email) {
+            $data ['email'] = $request->email;
+        }
+        if ($request->new_password) {
+            $data['password'] = bcrypt($request->new_password);
+        }
+
+        User::where('id', $id)
+            ->update($data);
+        Session::put('msg', '  مشخصات شما با موفقیت ویرایش شد.');
+        return redirect()->back();
     }
+
 
     /**
      * Remove the specified resource from storage.

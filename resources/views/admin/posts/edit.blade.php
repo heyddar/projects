@@ -1,13 +1,13 @@
 @extends('admin.component')
 @section('meta')
-    <title> ویرایش محصول - {{$product->name}} </title>
+    <title> ویرایش پست - {{$post->title}} </title>
 
 @endsection
 @section('content2')
     <div class="container">
         <div class="card card-body">
 
-            <h2 class="text-primary"> افزودن محصول  </h2>
+            <h2 class="text-primary"> ویرایش پست  </h2>
 
             <hr>
             <?php
@@ -27,148 +27,97 @@
                     </ul>
                 </div>
             @endif
-            <form class="row justify-content-right" action="{{route('admin.product.update',['product'=>$product->id])}}" method="post" enctype="multipart/form-data">
+            <form class="row justify-content-right" action="{{route('admin.post.update',['post'=>$post->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
                 <div class="col-md-3 form-group ">
-                    <label for="name"> نام  </label>
-                    <input type="text" name="name" value="{{old('name') ?? $product->name ?? null}}" id="name" class="form-control">
+                    <label for="title"> عنوان  </label>
+                    <input type="text" name="title" value="{{old('title') ?? $post->title ?? null}}" id="title" class="form-control">
                 </div>
                 <div class="col-md-3 form-group text-right" style="right: 50%;">
                     <label for="image"> تصویرشاخص  </label>
-                    <input type="file" name="image"  value="{{old('image') ?? $product->image ?? null}}" id="image" class="form-control">
+                    <input type="file" name="image"  value="{{old('image') ?? $post->image ?? null}}" id="image" class="form-control">
                 </div>
                 <div class="w-100"><br></div>
 
                 <div class="form-group w-75">
-                    <label class="control-label" for="short_description">توضیح کوتاه</label>
-                    <textarea class="form-control"  id="short_description" name="short_description" rows="3" placeholder="وارد کردن اطلاعات ...">
-                        {{old('short_description') ?? $product->short_description ?? null}}
+                    <label class="control-label" for="summary"> خلاصه</label>
+                    <textarea class="form-control"  id="summary" name="summary" rows="3" placeholder="وارد کردن خلاصه ...">
+                        {{old('summary') ?? $post->summary ?? null}}
                     </textarea>
                 </div>
                 <div class="control-group hidden-phone w-50 col-md-10">
-                    <label class="control-label" for="long_description">توضیح بلند</label>
+                    <label class="control-label" for="content1"> محتوا</label>
                     <div class="controls">
-                        <textarea class="ckeditor"  id="long_description" name="long_description" rows="3">
-                            {{old('long_description') ?? $product->long_description ?? null}}
+                        <textarea class="ckeditor"  id="content1" name="content1" rows="3">
+                            {{old('content1') ?? $post->content ?? null}}
                         </textarea>
                     </div>
                 </div>
-            <div class="row col-md-12">
-                <div class="col-md-4 control-group">
-                    <label class="control-label" for="price">قیمت</label>
-                    <div class="controls">
-                        <input type="number" class="input-xlarge " value="{{old('price') ?? $product->price ?? null}}" id="price"  name="price">
-                    </div>
-                </div>
-                <div class="form-group col-md-4 ">
-                    <label for="input_status" class="control-label w-100"> رنگ ها</label>
-                    <select id="color_list" name="colors[]" class="form-control"  data-placeholder="  انتخاب کنید" multiple>
-                        @foreach($colors as $color)
-                            <option value="{{$color->id}}" @if(isset($product) && in_array($color['id'], $product->colors->pluck('id')->toArray(), true)) selected @endif>{{$color->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group col-md-4 ">
-                    <label for="input_status" class="control-label w-100"> سایزها</label>
-                    <select id="size_list" name="sizes[]"  class="form-control"  data-placeholder="  انتخاب کنید" multiple>
-
-
-                    @foreach($sizes as $size)
-                            <option value="{{$size->id}}" @if(isset($product) && in_array($size['id'], $product->sizes->pluck('id')->toArray(), true)) selected @endif >{{$size->title}}</option>
-
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-             <div class="row col-md-12">
+                <div class="row col-md-12 mt-3">
                  <div class="form-group col-md-4">
                      <label>انتخاب دسته بندی</label>
-                     <select class="form-control" name="category_id" >
-                         @foreach($categories as $category)
-                             <option value="{{$category->id}}" {{ !empty($product->category_id) && ($product->category_id === $category->id) ? 'selected' : '' }}>{{$category->title}}</option>
+                     <select class="form-control" name="group_id" >
+                         @foreach($groups as $group)
+                             <option value="{{$group->id}}" {{ !empty($post->group_id) && ($post->group_id === $group->id) ? 'selected' : '' }}>{{$group->title}}</option>
                          @endforeach
                      </select>
                  </div>
-                 <div class="form-group col-md-4">
-                     <label>انتخاب برند </label>
-                     <select class="form-control" name="brand_id" >
-                         @foreach($brands as $brand)
-                             <option value="{{$brand->id}}" {{ !empty($product->brand_id) && ($product->brand_id === $brand->id) ? 'selected' : '' }}>{{$brand->title}}</option>
-                         @endforeach
-                     </select>
-                 </div>
-                 <div class="form-group col-md-4">
-                     <label for="input_status" class="control-label">وضعیت موجودی </label>
-                     <br>
-                     @component('_components.bootstrap-select--single')
+                 <div class="col-lg-4">
+                     <h6>انتخاب کلمه کلیدی</h6>
+                     <div class="form-group">
+                         <select name="tags[]" id="tag_list"
+                                 class="form-control"
+                                 multiple="multiple" >
+                                 @foreach($tags as $tag)
+                                 <option value="{{ $tag->name }}" @if(isset($post) && in_array($tag['id'], $post->tags->pluck('id')->toArray(), true)) selected @endif >{{$tag->name}}</option>
+                                 @endforeach
 
-                         @slot('name') exist @endslot
-                         @slot('search') false @endslot
-
-                         @slot('options')
-                             <option {{ !empty($product->exist) && $product->exist === 'yes' ? 'selected' : '' }} value="yes">
-                                 موجود
-                             </option>
-                             <option {{ !empty($product->exist) && $product->exist === 'no' ? 'selected' : '' }} value="no">
-                                 تمام شده
-                             </option>
-                         @endslot
-
-                     @endcomponent
+                         </select>
+                     </div>
                  </div>
              </div>
-              <div class="row col-md-12">
-                  <div class="control-group col-md-4">
-                      <label class="control-label" for="count">تعداد</label>
-                      <div class="controls">
-                          <input type="number" class="input-xlarge " value="{{$product->count}}" id="count"  name="count">
-                      </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="input_status" class="control-label"> نوع </label>
-                      <br>
-                      @component('_components.bootstrap-select--single')
+                @if(\Illuminate\Support\Facades\Auth::user()->can('commenting'))
+                <div class="row col-md-12">
+                    <div class="col-md-4 form-group" >
 
-                          @slot('name') kind @endslot
-                          @slot('search') false @endslot
+                        <label class="d-block">وضعیت  </label>
 
-                          @slot('options')
-                              <option {{ !empty($product->kind) && $product->kind === 'special' ? 'selected' : '' }} value="special">
-                                  ویژه
-                              </option>
-                              <option {{ !empty($product->kind) && $product->kind === 'popular' ? 'selected' : '' }} value="popular">
-                                  محبوب
-                              </option>
-                              <option {{ !empty($product->kind) && $product->kind === 'new' ? 'selected' : '' }} value="new">
-                                  جدید
-                              </option>
-                          @endslot
-
-                      @endcomponent
-                  </div>
-                  <div class="col-md-4 form-group" >
-
-                      <label class="d-block">وضعیت  </label>
-
-                      <label class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" name="status" value="1" class="custom-control-input" @if ($product->status == '1') checked @endif>
-                          <span class="custom-control-label">
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="status" value="1" class="custom-control-input" @if ($post->status == '1') checked @endif>
+                            <span class="custom-control-label">
                         <span class="mr-4"> انتشار </span>
                     </span>
-                      </label>
-                      <label class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" name="status" value="0" class="custom-control-input" @if ($product->status == '0') checked @endif>
-                          <span class="custom-control-label">
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="status" value="0" class="custom-control-input" @if ($post->status == '0') checked @endif>
+                            <span class="custom-control-label">
                         <span class="mr-4"> پیشنویس </span>
                     </span>
-                      </label>
+                        </label>
 
-                  </div>
-              </div>
+                    </div>
+                    <div class="col-md-4 form-group" >
 
+                        <label class="d-block">امکان نظردهی </label>
 
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="has_comment" value="1" class="custom-control-input" @if ($post->has_comment == '1') checked @endif>
+                            <span class="custom-control-label">
+                        <span class="mr-4"> بله </span>
+                    </span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="has_comment" value="0" class="custom-control-input" @if ($post->has_comment == '0') checked @endif>
+                            <span class="custom-control-label">
+                        <span class="mr-4"> خیر </span>
+                    </span>
+                        </label>
+
+                    </div>
+                </div>
+                @endif
                 <div class="w-100"></div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary btn-block">

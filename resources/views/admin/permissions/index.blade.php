@@ -51,7 +51,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$sizes->links()}}
+                {{$permissions->links()}}
             </div>
         </div>
     </div>

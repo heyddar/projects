@@ -1,11 +1,11 @@
 @extends('admin.component')
 @section('meta')
-        <title> ویرایش سایز - {{$size->name}} </title>
+        <title> ویرایش رنگ - {{$color->name}} </title>
 
 @endsection
 @section('content2')
     <div class="container card card-body">
-            <h2 class="text-primary"> ویرایش سایز </h2>
+            <h2 class="text-primary"> ویرایش رنگ </h2>
 
         <hr>
         @if ($errors->any())
@@ -17,12 +17,12 @@
                 </ul>
             </div>
         @endif
-        <form class="row justify-content-center" action="{{route('admin.size.update',['size'=>$size->id])}}" method="post">
+        <form class="row justify-content-center" action="{{route('admin.color.update',['color'=>$color->id])}}" method="post">
             @csrf
             @method('PUT')
             <div class="col-md-3 form-group">
                 <label for="title">  عنوان </label>
-                <input type="text" name="title" value="{{old('title') ?? $size->title ?? null}}" id="title" class="form-control">
+                <input type="text" name="title" value="{{old('title') ?? $color->title ?? null}}" id="title" class="form-control">
             </div>
             <div class="w-100"></div>
             <div class="col-md-2">

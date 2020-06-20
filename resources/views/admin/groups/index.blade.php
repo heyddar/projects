@@ -1,12 +1,12 @@
 @extends('admin.component')
 @section('meta')
-    <title>لیست سایزها </title>
+    <title>لیست دسته بندی ها </title>
 
 @endsection
 @section('content2')
     <div class="container">
         <div class="card card-body">
-            <h2 class="text-primary">لیست سایزها </h2>
+            <h2 class="text-primary">لیست دسته بندی ها </h2>
             <?php
             if(Session::get('msg')){
                 echo'<p class="alert alert-success">';
@@ -19,20 +19,20 @@
                 <thead>
                 <tr >
                     <th> # </th>
-                    <th> نام </th>
+                    <th> عنوان </th>
                     <th colspan="2"> عملیات </th>
                 </tr>
                 </thead>
                 <tbody>
-              @foreach ($sizes as $i => $size)
+              @foreach ($groups as $i => $group)
                     <tr>
                         <th> {{$i+1}}</th>
-                        <td> {{$size->title}}</td>
+                        <td> {{$group->title}}</td>
                         <td>
-                            <a class="btn btn-info" href="{{route('admin.size.edit',['size'=>$size->id])}}">
+                            <a class="btn btn-info" href="{{route('admin.group.edit',['group'=>$group->id])}}">
                                 <i class="halflings-icon white fa fa-edit"></i>
                             </a>
-                            <a class= "btn btn-danger btn-setting " href="{{route('admin.size.delete',['size'=>$size->id])}}"
+                            <a class= "btn btn-danger btn-setting " href="{{route('admin.group.delete',['group'=>$group->id])}}"
                                onclick="return confirm('آیا مطمئنید؟')"
                                >
 
@@ -47,7 +47,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$sizes->links()}}
+                {{$groups->links()}}
             </div>
         </div>
     </div>

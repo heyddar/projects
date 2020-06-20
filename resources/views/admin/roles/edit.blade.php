@@ -35,6 +35,37 @@
                 </textarea>
             </div>
             <div class="w-100"></div>
+            <div class="col-md-12 jumbotron">
+
+                <h3 class="text-primary m-b-3">
+                    <strong>دسترسی‌ها</strong>
+                </h3>
+                <div class="row mt-5">
+                    @foreach($permissions as $permission)
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="pretty p-default p-curve p-pulse">
+                                    <div class="state p-primary">
+                                        <label for="input_permissions"></label>
+                                        <input type="checkbox" id="input_permissions" name="permissions[]" value="{{ $permission['id'] }}" type="checkbox"
+{{--                                               @if($permission->id == $role->permissionrole->id) checked @endif --}}
+                                        />
+
+                                        <label>{{ $permission['display_name'] }}</label>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                </h3>
+
+
+            </div>
+            <div class="w-100"></div>
+
             <div class="col-md-2">
                 <button type="submit" class="btn btn-primary btn-block">
                          ثبت

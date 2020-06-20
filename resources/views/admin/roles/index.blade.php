@@ -22,7 +22,7 @@
                     <th> نام </th>
                     <th> نامک </th>
                     <th> توضیحات </th>
-                    <th colspan="2"> عملیات </th>
+                    <th colspan="3"> عملیات </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +33,9 @@
                         <td> {{$role->name}}</td>
                         <td> {{$role->description}}</td>
                         <td>
+                            <a class="btn btn-secondary" href="{{route('admin.role.show',['role'=>$role->id])}}">
+                                <i class="halflings-icon white fa fa-eye"></i>
+                            </a>
                             <a class="btn btn-info" href="{{route('admin.role.edit',['role'=>$role->id])}}">
                                 <i class="halflings-icon white fa fa-edit"></i>
                             </a>
@@ -51,7 +54,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$sizes->links()}}
+                {{$roles->links()}}
             </div>
         </div>
     </div>

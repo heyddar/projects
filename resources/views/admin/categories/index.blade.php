@@ -1,12 +1,12 @@
 @extends('admin.component')
 @section('meta')
-    <title>لیست کاربران </title>
+    <title>لیست دسته بندی ها </title>
 
 @endsection
 @section('content2')
     <div class="container">
         <div class="card card-body">
-            <h2 class="text-primary">لیست کاربران </h2>
+            <h2 class="text-primary">لیست دسته بندی ها </h2>
             <?php
             if(Session::get('msg')){
                 echo'<p class="alert alert-success">';
@@ -20,25 +20,21 @@
                 <tr >
                     <th> # </th>
                     <th> نام </th>
-                    <th> ایمیل </th>
-                    <th>نوع کاربر</th>
-                    <th> تاریخ ثبت نام </th>
+                    <th> وضعیت</th>
                     <th colspan="2"> عملیات </th>
                 </tr>
                 </thead>
                 <tbody>
-              @foreach ($users as $i => $user)
+              @foreach ($categories as $i => $category)
                     <tr>
                         <th> {{$i+1}}</th>
-                        <td> {{$user->name}}</td>
-                        <td> {{$user->email}} </td>
-                        <td> {{$user->user_type()}} </td>
-                        <td> {{print_date($user->created_at)}} </td>
+                        <td> {{$category->title}}</td>
+                        <td> {{$category->category_status()}} </td>
                         <td>
-                            <a class="btn btn-info" href="{{route('admin.user.edit',['user'=>$user->id])}}">
+                            <a class="btn btn-info" href="{{route('admin.category.edit',['category'=>$category->id])}}">
                                 <i class="halflings-icon white fa fa-edit"></i>
                             </a>
-                            <a class= "btn btn-danger btn-setting " href="{{route('admin.user.delete',['user'=>$user->id])}}"
+                            <a class= "btn btn-danger btn-setting " href="{{route('admin.category.delete',['category'=>$category->id])}}"
                                onclick="return confirm('آیا مطمئنید؟')"
                                >
 
@@ -53,7 +49,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$users->links()}}
+                {{$categories->links()}}
             </div>
         </div>
     </div>

@@ -43,6 +43,20 @@ class BrandController extends Controller
         $brand = new Brand();
         $brand->title = $request->title;
         $brand->status = $request->status;
+        $image = $request->file('logo');
+        if($image){
+            $image_name = date('mdYHis');
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.".".$ext;
+            $upload_url = 'images/brands/';
+            $image_url = $upload_url.$image_full_name;
+            $isUploaded = $image->move($upload_url,$image_full_name);
+            if($isUploaded) {
+                $brand->logo = $image_url;
+            }else {
+                $brand->logo = null;
+            }
+        }
         $brand->save();
         Session::put('msg', ' برند جدید با موفقیت ثبت شد.');
         return redirect()->back();
@@ -85,13 +99,28 @@ class BrandController extends Controller
         $request->validate([
             'title' => 'nullable|string|max:200',
             'status' => 'nullable',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
         if ($request->title) {
             $data ['title']= $request->title;
         }
         $data ['status']= $request->status;
 
-
+        $image = $request->file('logo');
+        if($image){
+            $image_name = date('mdYHis');
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.".".$ext;
+            $upload_url = 'images/brands/';
+            $image_url = $upload_url.$image_full_name;
+            $isUploaded = $image->move($upload_url,$image_full_name);
+            if($isUploaded) {
+                $data ['logo']= $image_url;
+            }else {
+                $data ['logo'] = null;
+            }
+        }
 
         Brand::where('id',$id)
             ->update($data);
@@ -119,7 +148,7 @@ class BrandController extends Controller
         $rules = [
             'title' => 'required|string|max:255|unique:categories,title',
             'status' => 'nullable',
-
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ];
 

@@ -27,7 +27,7 @@
              </ul>
          </div>
      @endif
-    <form class="row justify-content-center" action="{{route('admin.role.store')}}" method="post" id="f1">
+    <form class="row justify-content-center" action="{{route('admin.permission.store')}}" method="post" id="f1">
         @csrf
 
         <div class="col-md-3 form-group">

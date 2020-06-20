@@ -1,13 +1,13 @@
 @extends('admin.component')
 @section('meta')
-    <title>افزودن سایز جدید </title>
+    <title>افزودن کلمه کلیدی جدید </title>
 
 @endsection
 @section('content2')
 <div class="container">
  <div class="card card-body">
 
-        <h2 class="text-primary"> افزودن سایز جدید </h2>
+        <h2 class="text-primary"> افزودن کلمه کلیدی جدید </h2>
 
     <hr>
      <?php
@@ -27,12 +27,12 @@
              </ul>
          </div>
      @endif
-    <form class="row justify-content-center" action="{{route('admin.size.store')}}" method="post" id="f1">
+    <form class="row justify-content-center" action="{{route('admin.tag.store')}}" method="post" id="f1">
         @csrf
 
         <div class="col-md-3 form-group">
-            <label for="title"> عنوان   </label>
-            <input type="text" name="title" value="{{  old('title') }}" id="title" class="form-control">
+            <label for="name"> عنوان   </label>
+            <input type="text" name="name" value="{{  old('name') }}" id="name" class="form-control">
         </div>
 
         <div class="w-100"></div>
@@ -46,23 +46,3 @@
   </div>
 </div>
 @endsection
-{{--@section('ajax')--}}
-{{--    <script type="text/javascript">--}}
-{{--        $(document).ready(function () {--}}
-{{--            $("#f1").submit(function (event) {--}}
-{{--                event.preventDefault();--}}
-{{--                var $this = $(this);--}}
-{{--                var url = $this.attr('action');--}}
-
-{{--                $.ajax({--}}
-{{--                    url : url,--}}
-{{--                    type:'POST',--}}
-{{--                    datatype:'JSON',--}}
-{{--                    data: $this.serialize(),--}}
-{{--                })--}}
-{{--                    --}}
-{{--            });--}}
-{{--        });--}}
-
-{{--    </script>--}}
-{{--@endsection--}}

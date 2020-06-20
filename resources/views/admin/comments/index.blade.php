@@ -1,12 +1,12 @@
 @extends('admin.component')
 @section('meta')
-    <title>لیست نقش ها </title>
+    <title>لیست نظرات </title>
 
 @endsection
 @section('content2')
     <div class="container">
         <div class="card card-body">
-            <h2 class="text-primary">لیست نقش ها </h2>
+            <h2 class="text-primary">لیست نظرات </h2>
             <?php
             if(Session::get('msg')){
                 echo'<p class="alert alert-success">';
@@ -19,24 +19,31 @@
                 <thead>
                 <tr >
                     <th> # </th>
-                    <th> نام </th>
-                    <th> نامک </th>
-                    <th> توضیحات </th>
-                    <th colspan="2"> عملیات </th>
+                    <th> نویسنده </th>
+                    <th> پست  </th>
+                    <th> عنوان </th>
+                    <th> محتوا </th>
+                    <th> وضعیت تایید </th>
+                    <th colspan="3"> عملیات </th>
                 </tr>
                 </thead>
                 <tbody>
-              @foreach ($roles as $i => $role)
+              @foreach ($comments as $i => $comment)
                     <tr>
                         <th> {{$i+1}}</th>
-                        <td> {{$role->display_name}}</td>
-                        <td> {{$role->name}}</td>
-                        <td> {{$role->description}}</td>
+                        <td> {{$comment->name}}</td>
+                        <td> {{$comment->post->title}}</td>
+                        <td> {{$comment->title}}</td>
+                        <td> {{str_limit($comment->content,40)}}</td>
+                        <td> {{$comment->is_accepted()}}</td>
                         <td>
-                            <a class="btn btn-info" href="{{route('admin.role.edit',['role'=>$role->id])}}">
+                            <a class="btn btn-info" data-toggle="tooltip" title="تغییر وضعیت تایید" href="{{route('admin.comment.edit',['comment'=>$comment->id])}}">
                                 <i class="halflings-icon white fa fa-edit"></i>
                             </a>
-                            <a class= "btn btn-danger btn-setting " href="{{route('admin.role.delete',['role'=>$role->id])}}"
+                            <a class="btn btn-secondary" data-toggle="tooltip" title=" نمایش کامنت" href="{{route('admin.comment.show',['comment'=>$comment->id])}}">
+                                <i class="halflings-icon white fa fa-comment"></i>
+                            </a>
+                            <a class= "btn btn-danger btn-setting " data-toggle="tooltip" title="حذف کامنت" href="{{route('admin.comment.delete',['comment'=>$comment->id])}}"
                                onclick="return confirm('آیا مطمئنید؟')"
                                >
 
@@ -51,7 +58,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$roles->links()}}
+                {{$comments->links()}}
             </div>
         </div>
     </div>

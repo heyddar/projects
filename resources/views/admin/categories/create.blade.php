@@ -1,13 +1,13 @@
 @extends('admin.component')
 @section('meta')
-    <title>افزودن کاربر جدید </title>
+    <title>افزودن دسته بندی جدید </title>
 
 @endsection
 @section('content2')
 <div class="container">
  <div class="card card-body">
 
-        <h2 class="text-primary"> افزودن کاربر جدید </h2>
+        <h2 class="text-primary"> افزودن دسته بندی جدید </h2>
 
     <hr>
      <?php
@@ -27,35 +27,27 @@
              </ul>
          </div>
      @endif
-    <form class="row justify-content-center" action="{{route('admin.user.store')}}" method="post" id="f1">
+    <form class="row justify-content-center" action="{{route('admin.category.store')}}" method="post" id="f1">
         @csrf
 
         <div class="col-md-3 form-group">
-            <label for="name"> نام  </label>
-            <input type="text" name="name" value="{{  old('name') }}" id="name" class="form-control">
-        </div>
-        <div class="col-md-3 form-group">
-            <label for="email"> ایمیل </label>
-            <input type="email" name="email" value="{{  old('email') }}"  id="email" class="form-control">
-        </div>
-        <div class="col-md-3 form-group">
-            <label for="password"> رمز عبور </label>
-            <input type="password" name="password" value="{{  old('password') }}"  id="password" class="form-control">
+            <label for="title"> عنوان   </label>
+            <input type="text" name="title" value="{{  old('title') }}" id="title" class="form-control">
         </div>
         <div class="col-md-4 form-group text-center">
 
-            <label class="d-block"> نوع کاربر </label>
+            <label class="d-block">وضعیت  </label>
 
             <label class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="is_admin" value="1" class="custom-control-input">
+                <input type="radio" name="status" value="1" class="custom-control-input">
                 <span class="custom-control-label">
-                        <span class="mr-4"> ادمین </span>
+                        <span class="mr-4"> انتشار </span>
                     </span>
             </label>
             <label class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="is_admin" value="0" class="custom-control-input">
+                <input type="radio" name="status" value="0" class="custom-control-input">
                 <span class="custom-control-label">
-                        <span class="mr-4"> عادی </span>
+                        <span class="mr-4"> پیشنویس </span>
                     </span>
             </label>
 

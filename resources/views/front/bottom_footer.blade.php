@@ -1,6 +1,4 @@
-<!--  ==========  -->
-<!--  = Bottom Footer =  -->
-<!--  ==========  -->
+
 <div class="foot-last">
     <a href="#" id="toTheTop">
         <span class="icon-chevron-up"></span>
@@ -15,4 +13,4 @@
             </div>
         </div>
     </div>
-</div> <!-- /bottom footer -->ورود
+</div>

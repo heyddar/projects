@@ -1,12 +1,12 @@
 @extends('admin.component')
 @section('meta')
-    <title>لیست محصولات </title>
+    <title>لیست پست ها </title>
 
 @endsection
 @section('content2')
     <div class="container">
         <div class="card card-body">
-            <h2 class="text-primary">لیست محصولات </h2>
+            <h2 class="text-primary">لیست پست ها </h2>
             <?php
             if(Session::get('msg')){
                 echo'<p class="alert alert-success">';
@@ -19,37 +19,34 @@
                 <thead>
                 <tr >
                     <th> # </th>
-                    <th> نام </th>
-                    <th> قیمت </th>
-{{--                    <th> رنگ </th>--}}
-{{--                    <th> سایز </th>--}}
+                    <th> عنوان </th>
+                    <th> نویسنده </th>
                     <th> دسته بندی </th>
-                    <th> برند </th>
                     <th> تصویر شاخص </th>
                     <th> وضعیت</th>
-                    <th colspan="2"> عملیات </th>
+                    <th colspan="3"> عملیات </th>
                 </tr>
                 </thead>
                 <tbody>
-              @foreach ($products as $i => $product)
+              @foreach ($posts as $i => $post)
                     <tr>
                         <th> {{$i+1}}</th>
-                        <td> {{$product->name}}</td>
-                        <td> {{$product->price}}</td>
-{{--                        <td> {{$product->colors->title}}</td>--}}
-{{--                        <td> {{$product->sizes->title}}</td>--}}
-                        <td> {{$product->category->title}}</td>
-                        <td> {{$product->brand->title}}</td>
+                        <td> {{$post->title}}</td>
+                        <td> {{$post->user->name}}</td>
+                        <td> {{$post->group->title}}</td>
                         <td>
-                            <img src="{{url($product->image)}}" alt="" style="width: 100px;height: auto">
+                            <img src="{{url($post->image)}}" alt="" style="width: 100px;height: auto">
 
                         </td>
-                        <td> {{$product->status()}} </td>
+                        <td> {{$post->status()}} </td>
                         <td>
-                            <a class="btn btn-info" href="{{route('admin.product.edit',['product'=>$product->id])}}">
+                            <a class="btn btn-info" href="{{route('admin.post.edit',['post'=>$post->id])}}">
                                 <i class="halflings-icon white fa fa-edit"></i>
                             </a>
-                            <a class= "btn btn-danger btn-setting " href="{{route('admin.product.delete',['product'=>$product->id])}}"
+                            <a class="btn btn-secondary" href="{{route('admin.post.show',['post'=>$post->id])}}">
+                                <i class="halflings-icon white fa fa-area-chart"></i>
+                            </a>
+                            <a class= "btn btn-danger btn-setting " href="{{route('admin.post.delete',['post'=>$post->id])}}"
                                onclick="return confirm('آیا مطمئنید؟')"
                                >
 
@@ -64,7 +61,7 @@
             </table>
 
             <div class="mt-4 center-pagination">
-                {{$products->links()}}
+                {{$posts->links()}}
             </div>
         </div>
     </div>

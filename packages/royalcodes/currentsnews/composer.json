@@ -1,0 +1,24 @@
+{
+    "name": "royalcodes/currentsnews",
+    "description": "a package to get latest news",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ali",
+            "email": "afshar13ali@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "RoyalCodes\\CurrentsNews\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RoyalCodes\\CurrentsNews\\CurrentsNewsServiceProvider"
+            ]
+        }
+    }
+}
