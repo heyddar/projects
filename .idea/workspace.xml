@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a943f20-8c04-4a15-8998-bb975e8c127f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/webmarket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webmarket.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2018_12_23_120000_create_shoppingcart_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_03_171034_create_visits_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_06_091230_create_visits_table.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +195,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/front" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -285,14 +287,34 @@
       <workItem from="1592594882888" duration="1354000" />
       <workItem from="1592641127999" duration="2334000" />
       <workItem from="1598912502113" duration="935000" />
-      <workItem from="1598938458771" duration="324000" />
+      <workItem from="1598938458771" duration="2925000" />
     </task>
+    <task id="LOCAL-00001" summary="add styles">
+      <created>1598938988604</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598938988604</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="add styles" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1598938985783">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1598938985783" />
+    <state x="275" y="137" key="Vcs.Push.Dialog.v2" timestamp="1598938995168">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="275" y="137" key="Vcs.Push.Dialog.v2/0.40.1366.728@0.40.1366.728" timestamp="1598938995168" />
     <state x="500" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598913805231">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
